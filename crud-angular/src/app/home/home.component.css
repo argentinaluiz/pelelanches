@@ -1,0 +1,84 @@
+a{
+    font-weight: bold;
+}
+
+ 
+
+
+.f{
+    font-family: Comfortaa;
+    font-weight: bold;
+}
+
+.m{
+    width: 12%;
+    height: auto;
+}
+
+.close{
+    background-color: red;
+}
+
+mat-card {
+    max-width: 80%;
+    margin: 2em auto;
+    text-align: center;    
+  }
+
+  
+
+  .header-logo {
+    height: 90%;
+    width: 90%;
+    
+  }
+
+  .mat-card-header{
+    
+  }
+
+  .title-card{
+    margin-left: 10%;
+    font-family: Comfortaa;
+    font-weight: bold;   
+    color:#f2070b;
+    
+  }
+
+  .card-cardapio{
+    height: 80%;
+    width: 80%;   
+    
+  }
+
+  .card-cont{
+      background-color: #eb4a38;
+      padding: 0;
+      margin: 0;
+    
+  }
+
+ 
+  /*
+
+box-shadow: 1px  1px 1px black;
+
+  .example-container{
+      background-color: brown;  ///
+      
+       background-size: cover;
+  }
+*/
+  
+  
+
+
+
+/*
+.app{
+    height: 100vh;    // emmet h100vh
+}
+
+ margin-top: 38%;
+
+*/

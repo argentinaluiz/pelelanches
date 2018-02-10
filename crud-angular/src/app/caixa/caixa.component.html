@@ -1,0 +1,22 @@
+<mat-card class="bcard">
+    <mat-card-header> 
+          <mat-card-title> 
+            <img alt="icon"  [src]="moneyIcon" class="money-icon">
+           <h2>Caixa</h2>
+         </mat-card-title>         
+          <mat-card-subtitle>Finanças & Controles</mat-card-subtitle>
+    </mat-card-header>
+          <p></p> 
+ </mat-card> 
+   <h3 class="titulo" >Pedidos efetuados</h3>
+   <div class="unids">
+    <p><b>Mesa :</b> {{clientData.selectedMesa}} </p>
+    <p><b>Quantidade :</b> {{clientData.selectedQtde}} </p>     
+    <p><b>Lanche :</b> {{clientData.selectedLanche}} </p> 
+    <p><b>Valor :</b> {{clientData.price}}.00 </p>
+   </div>
+   <div>
+      <h2 class="titulo" >TOTAL</h2>
+      <p><b>Valor :</b> {{clientData.totalCount}}.00 </p>
+   </div>
+   

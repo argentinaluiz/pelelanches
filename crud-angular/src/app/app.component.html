@@ -1,0 +1,38 @@
+<mat-toolbar color="primary" >   
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu"> 
+    <button mat-menu-item>
+      <mat-icon>dialpad</mat-icon>
+      <span><a routerLink="home">Home</a></span>
+    </button>
+    <button mat-menu-item>
+        <mat-icon>dialpad</mat-icon>
+        <span><a routerLink="garcom">Garçom</a></span>
+    </button>
+    <button mat-menu-item>
+        <mat-icon>dialpad</mat-icon>
+        <span><a routerLink="balcao">Balcão</a></span>
+      </button>  
+      <button mat-menu-item>
+          <mat-icon>dialpad</mat-icon>
+          <span><a routerLink="producao">Produção</a></span>
+      </button>
+      <button mat-menu-item>
+          <mat-icon>dialpad</mat-icon>
+          <span><a routerLink="estoque">Estoque</a></span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>dialpad</mat-icon>
+        <span><a routerLink="caixa">Caixa</a></span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>dialpad</mat-icon>
+      <span><a routerLink="teste">teste</a></span>
+  </button>
+  </mat-menu>
+</mat-toolbar> 
+
+
+<router-outlet></router-outlet>
