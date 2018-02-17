@@ -19,9 +19,11 @@ router.get('/items', (req,res,next)=> {
 // inserting new data
 router.post('/item', (req, res, next)=> {
     let newPeleItem = new Item({
-        itemSelectedMesa: req.body.itemSelectedMesa,
-        itemSelectedQtde: req.body.itemSelectedQtde,
-        itemSelectedLanche: req.body.itemSelectedLanche        
+        selectedMesa: req.body.selectedMesa,
+        selectedQtde: req.body.selectedQtde,
+        selectedLanche: req.body.selectedLanche ,
+        totalBread:   req.body.totalBread,
+        totalCount:   req.body.totalCount       
     });
     newPeleItem.save((err, item)=>{
         if(err){
@@ -30,7 +32,7 @@ router.post('/item', (req, res, next)=> {
             res.json({msg: 'Item adicionado com sucesso !'});
         }
     });    
-});
+}); 
 
 // updating the data
 router.put('/item/:id', (req,res,next)=> {

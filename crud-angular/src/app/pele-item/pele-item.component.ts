@@ -15,6 +15,8 @@ import { FormsModule, NgForm } from '@angular/forms' ;
 export class PeleItemComponent implements OnInit {
  
   peleItemList: Item[]=[];
+  selectedItem = Item;
+  
 
     constructor( private clientData : ClientDataService) { 
    
@@ -27,22 +29,62 @@ export class PeleItemComponent implements OnInit {
       //console.log('data from service' + this.peleItemList[0].itemSelectedMesa);
     }) 
   } 
-
+ 
 
   addItem(form){
     let newItem: Item = {
-      itemSelectedMesa: form.value.itemSelectedMesa,
-      itemSelectedQtde: form.value.itemSelectedQtde,
-      itemSelectedLanche: form.value.itemSelectedLanche,
-      itemTotalBread: form.value.itemTotalBread,
-      itemTotalCount: form.value.itemTotalCount
+      selectedMesa: form.value.selectedMesa,
+      selectedQtde: form.value.selectedQtde,
+      selectedLanche: form.value.selectedLanche,
+      totalBread: form.value.totalBread,
+      totalCount: form.value.totalCount
     }
-       this.clientData.addPeleItem(newItem)
+      
+   
+   this.clientData.addPeleItem(newItem)
        .subscribe(item => {
           console.log(item);
           this.getItems();
-       });
+       }); 
   }
+
+
+  deleteItem(id){
+    this.clientData.deletePeleItem(id)
+    .subscribe(data => {
+      console.log(data);
+      if(data.n == 1){
+        for(var i = 0; i < this.peleItemList.length; i++){
+          if(id == this.peleItemList[i]._id){
+            this.peleItemList.splice(i , 1);
+          }
+        }
+      }
+    })
+  }
+
+
+   editItem(form){
+    let newItem: Item = {
+      _id: this.selectedItem._id ,
+      selectedMesa: form.value.selectedMesa,
+      selectedQtde: form.value.selectedQtde,
+      selectedLanche: form.value.selectedLanche,
+      totalBread: form.value.totalBread,
+      totalCount: form.value.totalCount
+    }
+
+      this.clientData.updatePeleItem(newItem)
+      .subscribe( result => {
+        console.log( 'item original foi atualizado do valor velho:' + result);
+        this.getItems();
+      })
+
+
+   }
+
+
+   
 
 
 
@@ -50,7 +92,7 @@ export class PeleItemComponent implements OnInit {
     this.getItems();    
    }
  
-   displayedColumns = ['mesas', 'qtdes', 'lanches','totalpaes', 'totals'];
+   displayedColumns = ['mesas', 'qtdes', 'lanches','totalpaes', 'totals', 'editar', 'deletar'];
    dataSource = new MatTableDataSource(this.peleItemList);
 
 

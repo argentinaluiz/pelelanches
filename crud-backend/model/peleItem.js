@@ -2,28 +2,28 @@ const mongoose = require('mongoose');
 
 const peleItemSchema = mongoose.Schema({
     
-    itemSelectedMesa: {
+    selectedMesa: {
         type: Number,
         required: true
-    }, 
-    itemSelectedQtde: {
+    },  
+    selectedQtde: {
         type: Number,
         required: true
     },
     
-    itemSelectedLanche: {
+    selectedLanche: {
         type: String,
         required: true
     },
-    itemTotalBread: {
+    totalBread: {
         type: Number,
         required: true
     },
-    itemTotalCount: {
+    totalCount: {
         type: Number,
         required: true
     }
 
 });
 
-const Item = module.exports =  mongoose.model('Item', peleItemSchema); 
+const Item = module.exports =  mongoose.model('Item', peleItemSchema);  

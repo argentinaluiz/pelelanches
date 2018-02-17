@@ -13,14 +13,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
   
 
 @NgModule({
-    imports: [MatButtonModule, MatToolbarModule, FlexLayoutModule, MatSidenavModule, MatIconModule, MatMenuModule, MatCardModule, MatListModule,MatFormFieldModule,MatInputModule,MatSelectModule, MatTableModule],
+    imports: [MatButtonModule, MatToolbarModule, FlexLayoutModule, MatSidenavModule, MatIconModule, MatMenuModule, MatCardModule, MatListModule,MatFormFieldModule,MatInputModule,MatSelectModule, MatTableModule, MatCheckboxModule],
     
-    exports: [MatButtonModule, MatToolbarModule,  FlexLayoutModule, MatSidenavModule, MatIconModule, MatMenuModule, MatCardModule, MatListModule,MatFormFieldModule,MatInputModule,MatSelectModule, MatTableModule ]
+    exports: [MatButtonModule, MatToolbarModule,  FlexLayoutModule, MatSidenavModule, MatIconModule, MatMenuModule, MatCardModule, MatListModule,MatFormFieldModule,MatInputModule,MatSelectModule, MatTableModule, MatCheckboxModule ]
 })
 
 export class MaterialModule { } 

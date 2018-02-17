@@ -1,31 +1,60 @@
 
-
+  
 
 <form #frm = "ngForm" (ngSubmit)="addItem(frm)" >
 <div class="example-container">
     <mat-form-field>
-      <input matInput placeholder="Mesa" type="number" ngModel  name="itemSelectedMesa" value="" >
+      <input matInput placeholder="Mesa" type="number" ngModel  name="selectedMesa" value=" " >
+    </mat-form-field>
+  
+    <mat-form-field> 
+      <input matInput placeholder="Quantidade" type="number" ngModel  name="selectedQtde" value=" " >
     </mat-form-field>
   
     <mat-form-field>
-      <input matInput placeholder="Quantidade" type="number" ngModel  name="itemSelectedQtde" value="" >
-    </mat-form-field>
-  
-    <mat-form-field>
-        <input matInput placeholder="Lanche" type="text" ngModel name="itemSelectedLanche" value="" >
+        <input matInput placeholder="Lanche" type="text" ngModel name="selectedLanche" value=" " >
     </mat-form-field>
     <mat-form-field>
-        <input matInput placeholder="total Paes" type="number" ngModel  name="itemTotalBread" value="" >
+        <input matInput placeholder="total Paes" type="number" ngModel  name="totalBread" value=" " >
       </mat-form-field>
       <mat-form-field>
-          <input matInput placeholder="Conta Total" type="number" ngModel  name="itemTotalCount" value="" >
+          <input matInput placeholder="Conta Total" type="number" ngModel  name="totalCount" value=" " >
         </mat-form-field>
   </div>
   <button mat-button type="submit" >Salvar</button>
 </form> 
 
   <br><br><br><br>
+
+<h3>Editar</h3>
+  <form #editForm = "ngForm" (ngSubmit)="editItem(editForm)" >
+    <div class="example-container">
+        <mat-form-field>
+          <input matInput placeholder="Mesa" type="number"   name="selectedMesa" value=" " >
+        </mat-form-field>
+      
+        <mat-form-field> 
+          <input matInput placeholder="Quantidade" type="number"   name="selectedQtde" value=" " >
+        </mat-form-field>
+      
+        <mat-form-field>
+            <input matInput placeholder="Lanche" type="text"  name="selectedLanche" value=" " >
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="total Paes" type="number"   name="totalBread" value=" " >
+          </mat-form-field>
+          <mat-form-field>
+              <input matInput placeholder="Conta Total" type="number"  name="totalCount" value=" " >
+            </mat-form-field>
+      </div>
+      <button mat-button type="submit" >Salvar</button>
+    </form> 
+    
+      <br><br><br><br>
+
+
   <h2>Lista banco</h2>
+  
 
 <div class="example-container mat-elevation-z8">
     <!-- <div class="example-header">
@@ -34,36 +63,51 @@
       </mat-form-field> 
     </div> -->
   
-    <mat-table  ngFor="let of peleItemList"  #table [dataSource]="peleItemList  ">
-  
+    <mat-table  ngFor="let of peleItemList"  #table [dataSource]="peleItemList">
+
+     
       <!-- Position Column -->
       <ng-container matColumnDef="mesas">
         <mat-header-cell *matHeaderCellDef> Mesa </mat-header-cell>
-        <mat-cell *matCellDef="let peleItemList"> {{peleItemList.itemSelectedMesa}} </mat-cell>
+        <mat-cell *matCellDef="let peleItemList"> {{peleItemList.selectedMesa}} </mat-cell>
       </ng-container>
   
       <!-- Name Column -->
       <ng-container matColumnDef="qtdes">
         <mat-header-cell *matHeaderCellDef> Quantidade </mat-header-cell>
-        <mat-cell *matCellDef="let peleItemList"> {{peleItemList.itemSelectedQtde}} </mat-cell>
+        <mat-cell *matCellDef="let peleItemList"> {{peleItemList.selectedQtde}} </mat-cell>
       </ng-container> 
   
       <!-- Weight Column -->
       <ng-container matColumnDef="lanches">
         <mat-header-cell *matHeaderCellDef> Lanche </mat-header-cell>
-        <mat-cell *matCellDef="let peleItemList"> {{peleItemList.itemSelectedLanche}} </mat-cell>
+        <mat-cell *matCellDef="let peleItemList"> {{peleItemList.selectedLanche}} </mat-cell>
       </ng-container>
 
       <!-- Symbol Column -->
       <ng-container matColumnDef="totalpaes">
         <mat-header-cell *matHeaderCellDef> Total Paes </mat-header-cell>
-        <mat-cell *matCellDef="let peleItemList">{{peleItemList.itemTotalBread}}</mat-cell>
+        <mat-cell *matCellDef="let peleItemList">{{peleItemList.totalBread}}</mat-cell>
       </ng-container>
   
       <!-- Symbol Column -->
       <ng-container matColumnDef="totals">
         <mat-header-cell *matHeaderCellDef> Total </mat-header-cell>
-        <mat-cell *matCellDef="let peleItemList">{{peleItemList.itemTotalCount}}</mat-cell>
+        <mat-cell *matCellDef="let peleItemList">{{peleItemList.totalCount}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="editar">
+        <mat-header-cell *matHeaderCellDef> Editar </mat-header-cell>
+        <mat-cell *matCellDef="let peleItemList">
+          <button mat-button type="button" name="button" (click)="editItem(item)"  >Editar</button>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="deletar">
+        <mat-header-cell *matHeaderCellDef> Deletar </mat-header-cell>
+        <mat-cell *matCellDef="let peleItemList">
+          <button mat-button type="button" name="button" (click)="deleteItem(item._id)">Deletar</button>
+        </mat-cell>
       </ng-container>
   
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

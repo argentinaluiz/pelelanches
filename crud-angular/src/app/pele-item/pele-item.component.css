@@ -23,4 +23,8 @@
   .mat-button{
     background-color: orangered;
   }
+
+.mat-cell{
+  padding: 5px;
+}
   
