@@ -15,7 +15,7 @@ import { FormsModule, NgForm } from '@angular/forms' ;
 export class PeleItemComponent implements OnInit {
  
   peleItemList: Item[]=[];
-  selectedItem = Item;
+  selectedItem: Item = new Item();
   
 
     constructor( private clientData : ClientDataService) { 
@@ -63,6 +63,9 @@ export class PeleItemComponent implements OnInit {
     })
   }
 
+  setSelectedItem(item){
+    this.selectedItem = item
+   }
 
    editItem(form){
     let newItem: Item = {
@@ -78,9 +81,9 @@ export class PeleItemComponent implements OnInit {
       .subscribe( result => {
         console.log( 'item original foi atualizado do valor velho:' + result);
         this.getItems();
-      })
-
-
+      });
+   
+          
    }
 
 
@@ -102,5 +105,3 @@ export class PeleItemComponent implements OnInit {
   }
  
    
- 
-
