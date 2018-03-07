@@ -29,7 +29,7 @@ export class ClientDataService {
      updatePeleItem(newItem){
       let headers = new Headers();
       headers.append('Content-type', 'application/json');
-      return this.http.put('http://localhost:3000/api/item'+newItem._id , newItem, { headers : headers})
+         return this.http.put('http://localhost:3000/api/item/'+newItem._id , newItem, { headers : headers})
       .map(res => res.json());
      }   
 
