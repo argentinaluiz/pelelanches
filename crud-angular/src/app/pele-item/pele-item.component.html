@@ -43,9 +43,10 @@
       <mat-form-field>
           <input matInput placeholder="Bebida" type="text" [(ngModel)]="selectedItem.selectedDrink" name="selectedDrink" value=" " >
         </mat-form-field>
-        <mat-form-field>
+        <!--<mat-form-field>
             <input matInput placeholder="Conta Total" type="number" [(ngModel)]="selectedItem.totalCount"  name="totalCount" value=" " >
-          </mat-form-field>
+          </mat-form-field>-->
+          <h2>{{calcularTotal()}}</h2>
     </div>
     <button mat-button type="submit" >Salvar</button>
   </form> 
@@ -70,9 +71,7 @@
           <input matInput placeholder="Quantidade Bebida" type="number" [(ngModel)]="selectedItem.selectedQtdeD"  name="selectedQtdeD" value=" " >
         </mat-form-field>
         
-          <mat-form-field>
-              <input matInput placeholder="Conta Total" type="number" [(ngModel)]="selectedItem.totalCount"  name="totalCount" value=" " >
-            </mat-form-field>
+          <h2>{{selectedItem.totalCount}}</h2>
       </div>
         <button mat-button type="submit" >Salvar</button>
       </form> 
@@ -98,12 +97,6 @@
           <mat-header-cell *matHeaderCellDef> Mesa </mat-header-cell>
           <mat-cell *matCellDef="let peleItemList"> {{peleItemList.selectedMesa}} </mat-cell>
         </ng-container>
-    
-        <!-- Name Column -->
-        <ng-container matColumnDef="qtdes">
-          <mat-header-cell *matHeaderCellDef> Quantidade </mat-header-cell>
-          <mat-cell *matCellDef="let peleItemList"> {{peleItemList.selectedQtdeE}} </mat-cell>
-        </ng-container> 
     
         <!-- Weight Column -->
         <ng-container matColumnDef="lanches">

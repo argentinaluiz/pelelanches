@@ -42,8 +42,9 @@ xUnit = 15.01;
       selectedEat: form.value.selectedEat,
       selectedQtdeD: form.value.selectedQtdeD,
       selectedDrink: form.value.selectedDrink,
-      totalCount: form.value.totalCount
+      totalCount: this.selectedItem.totalCount //como o valor não vem de formulário, pegamos diretamente o totalCount que está em selectedItem
     }
+
       
    
    this.clientData.addPeleItem(newItem)
@@ -52,6 +53,15 @@ xUnit = 15.01;
           this.getItems();
        }); 
   }
+
+  calcularTotal(){
+      let valor1 = +this.selectedItem.selectedMesa;
+      let valor2 = +this.selectedItem.selectedQtdeE;
+      this.selectedItem.totalCount = !isNaN(valor1) && !isNaN(valor2) ? valor1 * valor2:0;
+      //verificar se realmente temos números válidos nas variáveis, senão será zero
+      return this.selectedItem.totalCount;
+      
+   }
 
 
   deleteItem(id){
