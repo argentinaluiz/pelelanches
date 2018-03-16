@@ -7,10 +7,41 @@
           <mat-card-subtitle>Produção & Salgados</mat-card-subtitle>
     </mat-card-header>
           <p></p> 
- </mat-card>
+ </mat-card> 
  <h3 class="titulo" >Pedidos efetuados</h3>
-  <div class="unids">
-   <p><b>Mesa :</b> {{clientData.selectedMesa}} </p>
-   <p><b>Quantidade :</b> {{clientData.selectedQtde}} </p>     
-   <p><b>Lanche :</b> {{clientData.selectedLanche}} </p> 
+
+  <div class="example-container mat-elevation-z8">
+    <!-- <div class="example-header">
+      <mat-form-field>
+       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter"> 
+      </mat-form-field> 
+    </div> -->
+  
+    <mat-table  ngFor="let of peleItemList"  #table [dataSource]="peleItemList">
+ 
+     
+      <!-- Position Column -->
+      <ng-container matColumnDef="mesas">
+        <mat-header-cell *matHeaderCellDef>Mesa</mat-header-cell>
+        <mat-cell *matCellDef="let peleItemList"> {{peleItemList.selectedMesa}} </mat-cell>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="qtdes">
+        <mat-header-cell *matHeaderCellDef> Quantidade </mat-header-cell>
+        <mat-cell *matCellDef="let peleItemList"> {{peleItemList.selectedQtde}} </mat-cell>
+      </ng-container> 
+  
+      <!-- Weight Column -->
+      <ng-container matColumnDef="lanches">
+        <mat-header-cell *matHeaderCellDef> Lanche </mat-header-cell>
+        <mat-cell *matCellDef="let peleItemList"> {{peleItemList.selectedLanche}} </mat-cell>
+      </ng-container>
+
+      <!-- Symbol Column -->
+     
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
   </div>

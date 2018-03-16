@@ -1,19 +1,47 @@
+
+<mat-form-field>         
+  <mat-select name="selectedDrink" placeholder="Quantidade" [(value)]="selectedDrink" [(ngModel)]="selectedItem.selectedDrink">     
+     <mat-option value="1">01</mat-option>
+     <mat-option value="2">02</mat-option> 
+     <mat-option value="3">03</mat-option>
+     <mat-option value="4">04</mat-option>
+     <mat-option value="5">05</mat-option>
+     <mat-option value="6">06</mat-option>
+     <mat-option value="7">07</mat-option>
+     <mat-option value="8">08</mat-option>
+     <mat-option value="9">09</mat-option>
+     <mat-option value="10">10</mat-option> 
+   </mat-select>
+ </mat-form-field>   
+<br>  <br> 
+
+<input type="text" [(ngModel)]="xUnit" >
+<br><br>
+{{xUnit * selectedDrink}}
+<br><br><br>
+{{selectedDrink}}
+
+<br>  <br><br>  <br>
+
 <h3>Adicionar </h3>
-<form #frm = "ngForm" (ngSubmit)="addItem(frm)" >
-  <div class="example-container">
+<form #frm = "ngForm" (ngSubmit)="addItem(frm)" > 
+  <div class="example-container"> 
       <mat-form-field>
         <input matInput placeholder="Mesa" type="number" [(ngModel)]="selectedItem.selectedMesa"  name="selectedMesa" value=" " >
       </mat-form-field>
     
       <mat-form-field> 
-        <input matInput placeholder="Quantidade" type="number" [(ngModel)]="selectedItem.selectedQtde"  name="selectedQtde" value=" " >
-      </mat-form-field>
+        <input matInput placeholder="Quantidade" type="number" [(ngModel)]="selectedItem.selectedQtdeE"  name="selectedQtdeE" value=" " >
+      </mat-form-field> 
     
       <mat-form-field>
-          <input matInput placeholder="Lanche" type="text" [(ngModel)]="selectedItem.selectedLanche" name="selectedLanche" value=" " >
+          <input matInput placeholder="Lanche" type="text" [(ngModel)]="selectedItem.selectedEat" name="selectedEat" value=" " >
+      </mat-form-field>
+      <mat-form-field> 
+        <input matInput placeholder="Quantidade Bebida" type="number" [(ngModel)]="selectedItem.selectedQtdeD"  name="selectedQtdeD" value=" " >
       </mat-form-field>
       <mat-form-field>
-          <input matInput placeholder="total Paes" type="number" [(ngModel)]="selectedItem.totalBread" name="totalBread" value=" " >
+          <input matInput placeholder="Bebida" type="text" [(ngModel)]="selectedItem.selectedDrink" name="selectedDrink" value=" " >
         </mat-form-field>
         <mat-form-field>
             <input matInput placeholder="Conta Total" type="number" [(ngModel)]="selectedItem.totalCount"  name="totalCount" value=" " >
@@ -30,17 +58,18 @@
         <mat-form-field>
           <input matInput placeholder="Mesa" type="number" [(ngModel)]="selectedItem.selectedMesa"  name="selectedMesa" value=" " >
         </mat-form-field>
-      
+       
         <mat-form-field> 
-          <input matInput placeholder="Quantidade" type="number" [(ngModel)]="selectedItem.selectedQtde"  name="selectedQtde" value=" " >
+          <input matInput placeholder="Quantidade Lanche" type="number" [(ngModel)]="selectedItem.selectedQtdeE"  name="selectedQtdeE" value=" " >
         </mat-form-field>
       
         <mat-form-field>
-            <input matInput placeholder="Lanche" type="text" [(ngModel)]="selectedItem.selectedLanche" name="selectedLanche" value=" " >
+            <input matInput placeholder="Lanche" type="text" [(ngModel)]="selectedItem.selectedEat" name="selectedEat" value=" " >
         </mat-form-field>
-        <mat-form-field>
-            <input matInput placeholder="total Paes" type="number" [(ngModel)]="selectedItem.totalBread" name="totalBread" value=" " >
-          </mat-form-field>
+        <mat-form-field> 
+          <input matInput placeholder="Quantidade Bebida" type="number" [(ngModel)]="selectedItem.selectedQtdeD"  name="selectedQtdeD" value=" " >
+        </mat-form-field>
+        
           <mat-form-field>
               <input matInput placeholder="Conta Total" type="number" [(ngModel)]="selectedItem.totalCount"  name="totalCount" value=" " >
             </mat-form-field>
@@ -51,7 +80,7 @@
         <br><br><br><br>
   
   
-    <h2>Lista banco</h2>
+    <h2>Lista banco</h2> 
     
   
   <div class="example-container mat-elevation-z8">
@@ -73,19 +102,23 @@
         <!-- Name Column -->
         <ng-container matColumnDef="qtdes">
           <mat-header-cell *matHeaderCellDef> Quantidade </mat-header-cell>
-          <mat-cell *matCellDef="let peleItemList"> {{peleItemList.selectedQtde}} </mat-cell>
+          <mat-cell *matCellDef="let peleItemList"> {{peleItemList.selectedQtdeE}} </mat-cell>
         </ng-container> 
     
         <!-- Weight Column -->
         <ng-container matColumnDef="lanches">
           <mat-header-cell *matHeaderCellDef> Lanche </mat-header-cell>
-          <mat-cell *matCellDef="let peleItemList"> {{peleItemList.selectedLanche}} </mat-cell>
+          <mat-cell *matCellDef="let peleItemList"> {{peleItemList.selectedEat}} </mat-cell>
         </ng-container>
+        <ng-container matColumnDef="qtdes">
+          <mat-header-cell *matHeaderCellDef> Quantidade Bebida </mat-header-cell>
+          <mat-cell *matCellDef="let peleItemList"> {{peleItemList.selectedQtdeD}} </mat-cell>
+        </ng-container> 
   
         <!-- Symbol Column -->
-        <ng-container matColumnDef="totalpaes">
-          <mat-header-cell *matHeaderCellDef> Total Paes </mat-header-cell>
-          <mat-cell *matCellDef="let peleItemList">{{peleItemList.totalBread}}</mat-cell>
+        <ng-container matColumnDef="drinks">
+          <mat-header-cell *matHeaderCellDef> Bebida </mat-header-cell>
+          <mat-cell *matCellDef="let peleItemList">{{peleItemList.selectedDrink}}</mat-cell>
         </ng-container>
     
         <!-- Symbol Column -->
@@ -106,7 +139,7 @@
           <mat-cell *matCellDef="let peleItemList">
             <button mat-button type="button" name="button" (click)="deleteItem(peleItemList._id)">Deletar</button>
           </mat-cell>
-        </ng-container>
+        </ng-container> 
     
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

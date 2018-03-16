@@ -3,24 +3,28 @@ import { Item } from '../item';
 import { ClientDataService } from '../client-data.service';
 import { MatTableDataSource} from '@angular/material';
 import { FormsModule, NgForm } from '@angular/forms' ;
+import { Title } from '@angular/platform-browser';
 
   
 @Component({
   selector: 'app-pele-item',
-  templateUrl: './pele-item.component.html',
+  templateUrl: './pele-item.component.html', 
   styleUrls: ['./pele-item.component.css'] ,
   providers: [ClientDataService]
 
 })
 export class PeleItemComponent implements OnInit {
+
+xUnit = 15.01;
+
+
+  
  
   peleItemList: Item[]=[];
   selectedItem: Item = new Item();
   
 
-    constructor( private clientData : ClientDataService) { 
-   
-  }
+    constructor( private clientData : ClientDataService) { }
  
   getItems(){    
     this.clientData.getPeleItems()
@@ -34,9 +38,10 @@ export class PeleItemComponent implements OnInit {
   addItem(form){
     let newItem: Item = {
       selectedMesa: form.value.selectedMesa,
-      selectedQtde: form.value.selectedQtde,
-      selectedLanche: form.value.selectedLanche,
-      totalBread: form.value.totalBread,
+      selectedQtdeE: form.value.selectedQtdeE,
+      selectedEat: form.value.selectedEat,
+      selectedQtdeD: form.value.selectedQtdeD,
+      selectedDrink: form.value.selectedDrink,
       totalCount: form.value.totalCount
     }
       
@@ -71,9 +76,10 @@ export class PeleItemComponent implements OnInit {
     let newItem: Item = {
       _id: this.selectedItem._id ,
       selectedMesa: form.value.selectedMesa,
-      selectedQtde: form.value.selectedQtde,
-      selectedLanche: form.value.selectedLanche,
-      totalBread: form.value.totalBread,
+      selectedQtdeE: form.value.selectedQtdeE,
+      selectedEat: form.value.selectedEat,
+      selectedQtdeD: form.value.selectedQtdeD,
+      selectedDrink: form.value.selectedDrink,
       totalCount: form.value.totalCount
     }
 
@@ -95,7 +101,7 @@ export class PeleItemComponent implements OnInit {
     this.getItems();    
    }
  
-   displayedColumns = ['mesas', 'qtdes', 'lanches','totalpaes', 'totals', 'editar', 'deletar'];
+   displayedColumns = ['mesas', 'qtdes', 'lanches','drinks', 'totals', 'editar', 'deletar'];
    dataSource = new MatTableDataSource(this.peleItemList);
 
 

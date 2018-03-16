@@ -14,22 +14,23 @@ router.get('/items', (req,res,next)=> {
        }
    });
 });
-
+ 
 
 // inserting new data
 router.post('/item', (req, res, next)=> {
     let newPeleItem = new Item({
         selectedMesa: req.body.selectedMesa,
-        selectedQtde: req.body.selectedQtde,
-        selectedLanche: req.body.selectedLanche ,
-        totalBread:   req.body.totalBread,
+        selectedQtdeE: req.body.selectedQtdeE,
+        selectedEat: req.body.selectedEat ,
+        selectedQtdeD: req.body.selectedQtdeD,
+        selectedDrink:   req.body.selectedDrink,
         totalCount:   req.body.totalCount       
     });
     newPeleItem.save((err, item)=>{
         if(err){
             res.json(err);
         }else{
-            res.json({msg: 'Item adicionado com sucesso !'});
+            res.json({msg: 'Item adicionado com sucesso !'});            
         }
     });    
 }); 
@@ -38,11 +39,12 @@ router.post('/item', (req, res, next)=> {
 router.put('/item/:id', (req,res,next)=> {
     Item.findOneAndUpdate({_id: req.params.id},{
        $set:{
-        itemSelectedMesa: req.body.itemSelectedMesa,
-        itemSelectedQtde: req.body.itemSelectedQtde,
-        itemSelectedLanche: req.body.itemSelectedLanche,
-        itemTotalBread:   req.body.itemTotalBread,
-        itemTotalCount:   req.body.itemTotalCount
+        selectedMesa: req.body.selectedMesa,
+        selectedQtdeE: req.body.selectedQtdeE,
+        selectedEat: req.body.selectedEat,
+        selectedQtdeD: req.body.selectedQtdeD,
+        selectedDrink:   req.body.selectedDrink,
+        totalCount:   req.body.totalCount
        }      
     },
       function(err, result){

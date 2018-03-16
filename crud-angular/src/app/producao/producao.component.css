@@ -8,3 +8,12 @@
   .pcard{
       width:99%;
   }
+
+  .titulo{
+    text-align: center;
+  }
+
+  .mat-header-cell{
+    color:black;
+    font-weight: bold;
+  }

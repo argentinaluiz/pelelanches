@@ -6,17 +6,20 @@ const peleItemSchema = mongoose.Schema({
         type: Number,
         required: true
     },  
-    selectedQtde: {
+    selectedQtdeE: {
         type: Number,
         required: true
-    },
-    
-    selectedLanche: {
+    },    
+    selectedEat: {
         type: String,
         required: true
     },
-    totalBread: {
+    selectedQtdeD: {
         type: Number,
+        required: true
+    },
+    selectedDrink: {
+        type: String,
         required: true
     },
     totalCount: {
@@ -24,6 +27,6 @@ const peleItemSchema = mongoose.Schema({
         required: true
     }
 
-});
+}); 
 
 const Item = module.exports =  mongoose.model('Item', peleItemSchema);  

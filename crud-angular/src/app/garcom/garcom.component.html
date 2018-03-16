@@ -1,18 +1,20 @@
  <mat-card class="gcard"> 
     <mat-card-header>
           <mat-card-title> 
-            <img alt="icon"  [src]="waiterIcon" class="gIcon">
+            <img alt="icon"  [src]="waiterIcon" class="gIcon"> 
            <h2>Garçom</h2>
-         </mat-card-title>         
+         </mat-card-title>          
           <mat-card-subtitle>Atendimento</mat-card-subtitle>
     </mat-card-header>
-          <p></p> 
- </mat-card>  
+          <p></p>  
+ </mat-card>   
+
  <div class="example-container">
-    <form (submit)="submit()"> 
+    <form #frm = "ngForm" (ngSubmit)="addItem(frm)" >
        <div class="titulo" ><h3>Selecione o pedido :</h3></div> 
+       {{ calculatarTotal() }}
         <mat-form-field>         
-         <mat-select name="selectedMesa" placeholder="Mesa" [(value)]="selectedMesa" [(ngModel)]="clientData.selectedMesa">      
+         <mat-select name="selectedMesa" placeholder="Mesa" [(value)]="selectedMesa" [(ngModel)]="selectedItem.selectedMesa">      
             <mat-option value="1">01</mat-option>
             <mat-option value="2">02</mat-option>
             <mat-option value="3">03</mat-option>
@@ -24,10 +26,10 @@
             <mat-option value="9">09</mat-option>
             <mat-option value="10">10</mat-option> 
           </mat-select>
-        </mat-form-field>   
+        </mat-form-field>    
       <br> 
       <mat-form-field>         
-        <mat-select name="selectedQtde" placeholder="Quantidade" [(value)]="selectedQtde" [(ngModel)]="clientData.selectedQtde">     
+        <mat-select name="selectedQtdeE" placeholder="Qtde.Lanches" [(value)]="selectedQtdeE" [(ngModel)]="selectedItem.selectedQtdeE">     
            <mat-option value="1">01</mat-option>
            <mat-option value="2">02</mat-option>
            <mat-option value="3">03</mat-option>
@@ -43,24 +45,72 @@
      <br>  <br>
          
          <mat-form-field>         
-    <mat-select name="selectedLanche" placeholder="Lanche" [(value)]="selectedLanche" [(ngModel)]="clientData.selectedLanche"> 
-             <mat-option value="Pelé X">Pelé-X</mat-option>
-             <mat-option value="Pelé XFrango">Pelé-Frango</mat-option>
-             <mat-option value="Pelé XDog">Pelé XDog</mat-option>
-             <mat-option value="Pelé Dogão">Pelé Dogão</mat-option>
-             <mat-option value="Pelé Dogão Frango">Pelé Dogão Frango</mat-option>
-             <mat-option value="Pelé Fritas Grande">Pelé Fritas Grande</mat-option>
-             <mat-option value="Pelé Fritas Média">Pelé Fritas Média</mat-option>
-             <mat-option value="Pelé Fritas Pequena">Pelé Fritas Pequena</mat-option>
+    <mat-select name="selectedEat" placeholder="Lanche" [(value)]="selectedEat" [(ngModel)]="selectedItem.selectedEat"> 
+             <mat-option value="Pelé-X">Pelé-X</mat-option>
+             <mat-option value="X-Frango">X-Frango</mat-option>
+             <mat-option value="X-Dog">X-Dog</mat-option>
+             <mat-option value="Dogão">Dogão</mat-option>
+             <mat-option value="Dogão Frango">Dogão Frango</mat-option>
+             <mat-option value="Fritas Grande">Fritas Grande</mat-option>
+             <mat-option value="Fritas Média">Fritas Média</mat-option>
+             <mat-option value="Fritas Pequena">Fritas Pequena</mat-option>
+           </mat-select>
+         </mat-form-field> 
+     <br> 
+     <mat-form-field>         
+      <mat-select name="selectedQtdeD" placeholder="Qtde.Bebidas" [(value)]="selectedQtdeD" [(ngModel)]="selectedItem.selectedQtdeD">     
+         <mat-option value="1">01</mat-option>
+         <mat-option value="2">02</mat-option>
+         <mat-option value="3">03</mat-option>
+         <mat-option value="4">04</mat-option>
+         <mat-option value="5">05</mat-option>
+         <mat-option value="6">06</mat-option>
+         <mat-option value="7">07</mat-option>
+         <mat-option value="8">08</mat-option>
+         <mat-option value="9">09</mat-option>
+         <mat-option value="10">10</mat-option> 
+       </mat-select>
+     </mat-form-field>   
+   <br>  <br>
+   <mat-form-field>         
+    <mat-select name="selectedDrink" placeholder="Bebida" [(value)]="selectedDrink" [(ngModel)]="selectedItem.selectedDrink"> 
+             <mat-option value="Refrigerante">Refrigerante</mat-option>
+             <mat-option value="Cerveja">Cerveja</mat-option>
+             <mat-option value="Cuba">Cuba</mat-option>
+             <mat-option value="Wisky">Wisky</mat-option>
+             <mat-option value="Caipirinha">Caipirinha</mat-option>             
            </mat-select>
          </mat-form-field> 
      <br>
+  <mat-form-field>         
+      <mat-select  name="totalCount"  [(value)]="totalCount" [(ngModel)]="selectedItem.totalCount"> 
+               <mat-option value="total">{{ calculatarTotal() }}</mat-option>                
+      </mat-select>
+   </mat-form-field>
+    
+     <br>
      
+     <br>
          <button mat-button color="primary" type="submit">Pedir</button>
         <br>
     </form>
      </div>
+     
+     <!--
+       <select [(ngModel)]="name" name="Select name" class="ui fluid search selection dropdown"> 
+        <option *ngFor="#n of names" [attr.value]="n">{{n}}</option>
+      </select>
+
+
+
+
      <p class="unids" >{{clientData.askOk}}</p>
- <!--   <p> {{clientData.selectedMesa}} </p>
+    <p> {{clientData.selectedMesa}} </p>
     <p> {{clientData.selectedQtde}} </p>
-    <p> {{clientData.selectedLanche}} </p> -->
+    <p> {{clientData.selectedLanche}} </p> 
+
+    <br><br><br><br>
+        <mat-form-field>
+          <input matInput placeholder="Conta Total" type="number" [(ngModel)]="selectedItem.totalCount"  name="totalCount" value="{{total}}" >
+        </mat-form-field>
+-->
